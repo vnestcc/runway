@@ -25,7 +25,12 @@ export const getServiceSupabase = () => {
   const supabaseUrl = getSupabaseUrl();
   const serviceRoleKey = getSupabaseServiceKey();
   
+  // During build time, return a mock client to avoid errors
   if (!supabaseUrl || !serviceRoleKey) {
+    if (process.env.NODE_ENV === 'production' && typeof window === 'undefined') {
+      // Return a mock client during build
+      return null as any;
+    }
     throw new Error('Missing Supabase environment variables');
   }
   
