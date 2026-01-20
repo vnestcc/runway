@@ -1,0 +1,6 @@
+name = "runway-vnest-frontend"
+compatibility_date = "2026-01-14"
+pages_build_output_dir = ".next"
+
+[env.production]
+name = "runway-vnest-frontend"
